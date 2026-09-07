@@ -1,0 +1,112 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  --color-bg: #08090a;
+  --color-surface: #0e1012;
+  --color-surface2: #141719;
+  --color-line: #1e2225;
+  --color-line-strong: #2c3235;
+  --color-fg: #e9ecef;
+  --color-muted: #8a9299;
+  --color-faint: #5c6469;
+  --color-accent: #c9f24e;
+  --color-info: #7cc7ff;
+  --color-warn: #ffb454;
+  --color-danger: #ff6b6b;
+  --color-math: #b7a7ff;
+  --color-cs: #7cc7ff;
+  --color-ml: #5fe3b1;
+  --color-robotics: #ff9d5c;
+
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: rgba(201, 242, 78, 0.25);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #23282b;
+    border-radius: 6px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #333a3e;
+  }
+}
+
+@layer utilities {
+  .mono {
+    font-family: var(--font-mono);
+  }
+  .label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-faint);
+  }
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: 10px;
+  }
+  .hairline {
+    height: 1px;
+    background: var(--color-line);
+  }
+  .rise {
+    opacity: 0;
+    animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .grain {
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(255, 255, 255, 0.035) 1px,
+      transparent 0
+    );
+    background-size: 22px 22px;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

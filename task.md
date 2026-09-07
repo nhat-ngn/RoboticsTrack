@@ -57,3 +57,27 @@ App: /home/user/mva-roadmap · web port 4200 (fixed in __ports.cjs)
 - planStarted() false until 2026-09-14 → dashboard must say "starts in X days", not fake week 1
 - No shadows/gradients/rounded-card soup. Accent only for state.
 - index.ts = composition only. Assets only in packages/web/public/.
+
+## Static / GitHub Pages conversion (option A, user's choice)
+- [x] lib/store.ts — localStorage layer under `mva:` prefix, pub/sub + cross-tab `storage` events, defensive reads (corrupt JSON / quota / no-window all degrade to empty), exportAll/importAll/clearAll
+- [x] queries/{progress,hours,availability}.ts REWRITTEN against the store and MOVED to stores/ — lint rule `web-query-files-build-on-typed-client` requires everything in queries/ to import the oRPC client, and these no longer talk to the API. Exported hook names + return shapes unchanged, so hours-panel / planner / use-plan-progress needed only an import path change.
+- [x] vite base "./" (relative assets) + wouter `useHashLocation` in app.tsx — works at any repo name/subpath/file://, deep links never 404
+- [x] components/backup-card.tsx on the dashboard — export/import/reset JSON for manual desktop<->laptop sync
+- [x] API routes + drizzle schema KEPT, marked in-file as no longer the source of truth (still work under `bun run dev`; basis for future sync). Nothing deleted.
+- [x] .github/workflows/deploy.yml — bun install, tsc, build:web, 404.html fallback, actions/deploy-pages
+- [x] git init + initial commit (135 files; .env correctly ignored)
+- [x] README §4 + §5 rewritten (were factually wrong: claimed server-side storage and offered 3 hosting options)
+
+### Bugs / traps found during this conversion
+6. **Dashboard lede still said "progress is saved server-side, so it follows you across devices"** — false after the switch. Fixed.
+7. **`.gitignore` had `scripts/`, so `!scripts/scheduler.test.ts` could never match** — git does not descend into an excluded directory. Changed to `scripts/*` + negations; the test suite is now in the repo.
+8. **Grid cells paint on `mousedown`, not `click`** — a synthetic `element.click()` silently does nothing. Availability QA must use real mouse events (`mb click x y`). Not an app bug, but it looks like one.
+
+### Verified after conversion
+- lint 0/0 · typecheck 3/3 · build green (795 kB) · scheduler tests 34/34 · sanity ALL PASS
+- All 10 hash routes render (`/#/`, `/#/roadmap`, `/#/planner`, 3 track pages, robotics, resources, interview, mva)
+- Tick a concept -> `mva:progress` = ["c-math-1-1"] -> survives reload (aria-pressed=true)
+- Paint Mon 10:00 -> `mva:availability` cell[8]=1, 69 free cells -> survives reload
+- Export/import round-trip: cleared storage, imported the file via the real file input, both stores restored + UI updated via the subscribe->invalidate path
+- Bad file (`{"hello":1}`) rejected with a message, existing state left intact
+- dist/index.html emits `./assets/...` (relative), confirming base "./"

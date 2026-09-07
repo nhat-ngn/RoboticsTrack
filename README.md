@@ -155,73 +155,70 @@ consciously trimmed.
 
 ## 4. Progress, and where it lives
 
-Progress is stored **server-side in a database**, not in your browser. No login — the plan is keyed
-to the deployment, so it follows you across laptop and phone as long as you're hitting the same
-instance.
+Progress is stored in **your browser's `localStorage`** — no account, no server, nothing that can
+go down. Ticks, logged hours and availability grids all live under the `mva:` key prefix in
+whichever browser you're using.
 
-Two consequences worth knowing:
+Three consequences worth knowing:
 
-- Anyone with the URL can see and modify your progress. This is fine for a personal roadmap; don't
-  treat it as private.
-- If the deployment goes away, so does the tick history, unless the database goes with it.
+- **Nothing syncs on its own.** Your desktop and your laptop keep separate tick histories. This is
+  the trade you accepted for free, permanent hosting.
+- **Use the backup card** at the bottom of the dashboard to move state between machines: `export
+  json` on the machine you've been ticking from, `import json` on the other. Import replaces local
+  state wholesale, so export first if both machines have unsaved progress.
+- **Clearing site data wipes your progress.** "Clear cookies and site data" for the domain, or a
+  hard browser reset, takes the tick history with it. Export occasionally — at phase boundaries is
+  a natural rhythm. Keep the JSON with your notes.
 
-Four ID schemes, all stable, in case you ever export:
+The same card has a `reset` button if you ever want to start from zero deliberately.
+
+Four ID schemes, all stable, so an old export always imports cleanly:
 `w{week}-{track}-{n}` for week tasks · `c-{track}-{group}-{n}` for concepts · `car-m1`-style for
 robotics milestones · `iv-p1`…`iv-p8` for interview milestones.
 
 ---
 
-## 5. Hosting — the honest version
+## 5. Hosting
 
-### What's running now
-A dev server inside a Runable sandbox on port 4200. That's a **preview**, not hosting: it lives as
-long as the sandbox does and it isn't a durable public URL. I don't control the platform's sandbox
-retention policy, so I can't give you a number of days — treat the preview as temporary and check
-the publish options in the Runable UI for anything permanent. Publishing and custom domains are
-handled there, not by me.
+You picked **GitHub Pages with progress in `localStorage`**, and that conversion is done. What
+changed:
 
-### Can this go on GitHub Pages?
-**Not as it stands, and the reason is structural.** This is a full-stack app:
+- **The database is no longer the source of truth.** All state reads and writes go through
+  `src/web/lib/store.ts`. The hooks in `src/web/stores/` are drop-in replacements for the old
+  server-backed ones, so the pages themselves didn't change.
+- **The oRPC API, Drizzle schema and Turso tables are still there**, untouched and still working
+  under `bun run dev`. They're marked in-file as no longer authoritative, and they're what you'd
+  build on if you ever do want cross-device sync. Nothing was deleted.
+- **Assets build to relative paths** (`base: "./"`) and routing is **hash-based** (`/#/planner`).
+  Together that means the site works at any repo name, any subpath, even opened from `file://`,
+  with zero configuration — and deep links never 404 because they never reach a server. The URLs
+  have a `#` in them; for a personal tool that's the whole cost.
+- **Manual sync** via export/import JSON on the dashboard, since you said you'd synchronise the two
+  machines yourself.
 
-```
-React + Vite frontend  →  Hono API (/api/rpc)  →  Drizzle ORM  →  Turso (libSQL) database
-```
+### Publishing it
 
-GitHub Pages serves **static files only**. It cannot run the Hono API or reach a database. Deploy
-this to Pages unchanged and you get the site rendering correctly with every tick silently failing.
-
-You have three real options:
-
-**Option A — static build, progress in `localStorage`.** I swap the database layer for browser
-storage. Then GitHub Pages works perfectly, hosting is free and permanent, and it's entirely
-outside Runable. Cost: progress stops syncing across devices — your phone and laptop keep separate
-tick histories. For a personal roadmap this is usually the right trade, and it's a change I can
-make in one pass.
-
-**Option B — static frontend on Pages, database elsewhere.** Keep cross-device sync by pointing the
-frontend at a hosted Turso database directly, or at the API deployed on a free tier (Fly.io,
-Railway, Deno Deploy). More moving parts, a little config, but you keep every feature.
-
-**Option C — deploy the whole thing as-is** to any host that runs a Bun/Node server — Fly.io,
-Railway, Render. Zero code changes, works exactly as it does now. Free tiers are adequate for one
-user.
-
-**My recommendation:** Option A. This is a two-year plan and it should outlive any platform,
-including this one. Cross-device sync sounds valuable but in practice you'll tick from one machine
-on a Sunday evening. Say the word and I'll do the conversion.
-
-### Getting the code out
-The project isn't a git repo yet. Whichever option you pick, step one is the same:
+The repo is initialised and committed locally. Three commands and you're live:
 
 ```bash
 cd mva-roadmap
-git init && git add -A && git commit -m "MVA roadmap"
 git remote add origin git@github.com:<you>/mva-roadmap.git
+git branch -M main
 git push -u origin main
 ```
 
-Ask me and I'll initialise it, add a sensible `.gitignore`, and wire up the GitHub Actions workflow
-that builds and publishes to Pages on every push.
+Then in the repo on GitHub: **Settings → Pages → Build and deployment → Source: "GitHub Actions"**.
+That's the only setting to touch. `.github/workflows/deploy.yml` is already committed; it installs,
+typechecks, builds `packages/web`, and publishes `dist` on every push to `main`. No secrets and no
+environment variables are needed, because there's no backend to configure.
+
+Your site lands at `https://<you>.github.io/mva-roadmap/`. Free and permanent, and it outlives
+Runable — which was the point.
+
+### About the preview URL
+The port-4200 URL you've been clicking is a dev server inside a Runable sandbox. It's a **preview**,
+not hosting: it lives as long as the sandbox does. I don't control sandbox retention, so I can't
+give you a number of days. Once Pages is up, that's your real URL.
 
 ---
 
@@ -229,9 +226,11 @@ that builds and publishes to Pages on every push.
 
 ```bash
 bun install
-bun run db:push     # create the progress + hours tables
 bun run dev         # http://localhost:4200
 ```
+
+No `db:push` and no `.env` needed anymore — the app reads and writes the browser, not a database.
+(If you ever revive the API for cross-device sync, `bun run db:push` still creates its tables.)
 
 Other commands: `bun run lint`, `bun run typecheck`, `bun run build`, `bun run kill:port`.
 
@@ -250,5 +249,5 @@ content. Edit these and the site follows:
 | `tracks.ts` | track blurbs and weekly hour budgets |
 
 **One hard rule:** task IDs are generated from position (`w{n}-{track}-{i}`) and are used as
-database keys. Adding weeks or appending tasks is safe. **Reordering or deleting existing tasks
+storage keys. Adding weeks or appending tasks is safe. **Reordering or deleting existing tasks
 silently reassigns other items' progress.** If you must reorder, clear that week's progress first.

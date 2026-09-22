@@ -24,6 +24,14 @@ const MATH: [string, Row[]][] = [
     ],
   ],
   [
+    "Linear algebra (concurrent)",
+    [
+      ["Four fundamental subspaces, rank, elimination", "You already have this at 13/20-X level; kept here only so downstream SVD/PCA/NLA tasks have an explicit prerequisite to point at. Self-paced, not a new topic.", 1, false, ["1806"]],
+      ["Eigendecomposition and diagonalization", "The picture Strang builds toward before the SVD; needed cold before Phase 5's numerical linear algebra deep dive.", 1, false, ["1806"]],
+      ["Positive-definite matrices and the SVD, first pass", "Strang's own route into the SVD, ahead of Trefethen's more numerical treatment in Phase 5. Finish 18.06/Strang before W34.", 2, false, ["1806"]],
+    ],
+  ],
+  [
     "Convex analysis",
     [
       ["Convex sets, hulls, cones, separating hyperplanes", "The vocabulary of every optimization paper you will read at MVA.", 2, true, ["boyd", "ee364a"]],
@@ -70,14 +78,14 @@ const MATH: [string, Row[]][] = [
   [
     "Statistics and inference",
     [
-      ["Statistical models, estimators, bias-variance", "MVA assumes this vocabulary from day one; prépa does not teach it.", 6, true, ["18650"]],
-      ["Maximum likelihood and exponential families", "Every loss function you will meet is a negative log-likelihood in disguise.", 6, true, ["18650", "murphy"]],
-      ["Fisher information and Cramér-Rao", "The fundamental limit on estimation; also connects to natural gradient.", 6, false, ["18650"]],
-      ["Asymptotic normality and the delta method", "How confidence statements get made, including about your own experiments.", 6, false, ["18650"]],
-      ["Hypothesis testing, Neyman-Pearson, p-values", "Needed to read papers critically and to not misreport your own results.", 6, true, ["18650"]],
-      ["Bootstrap and confidence intervals", "You will use this on your own policy success rates in Phase 8.", 6, true, ["18650"]],
-      ["Bayesian inference: priors, conjugacy, MAP vs MLE", "Half of MVA's probabilistic courses speak this language.", 6, true, ["18650", "murphy"]],
-      ["Linear regression theory, Gauss-Markov, ridge as MAP", "Least squares once more, with the distributional claims attached.", 6, false, ["18650", "murphy"]],
+      ["Statistical models, estimators, bias-variance", "MVA assumes this vocabulary from day one; prépa does not teach it.", 6, true, ["wasserman", "18650"]],
+      ["Maximum likelihood and exponential families", "Every loss function you will meet is a negative log-likelihood in disguise.", 6, true, ["wasserman", "18650", "murphy"]],
+      ["Fisher information and Cramér-Rao", "The fundamental limit on estimation; also connects to natural gradient.", 6, false, ["wasserman", "18650"]],
+      ["Asymptotic normality and the delta method", "How confidence statements get made, including about your own experiments.", 6, false, ["wasserman", "18650"]],
+      ["Hypothesis testing, Neyman-Pearson, p-values", "Needed to read papers critically and to not misreport your own results.", 6, true, ["wasserman", "18650"]],
+      ["Bootstrap and confidence intervals", "You will use this on your own policy success rates in Phase 8.", 6, true, ["wasserman", "18650"]],
+      ["Bayesian inference: priors, conjugacy, MAP vs MLE", "Half of MVA's probabilistic courses speak this language.", 6, true, ["wasserman", "18650", "murphy"]],
+      ["Linear regression theory, Gauss-Markov, ridge as MAP", "Least squares once more, with the distributional claims attached.", 6, false, ["wasserman", "18650", "murphy"]],
       ["Multivariate Gaussian identities", "Marginals, conditionals, precision form — reused endlessly in filters and PGMs.", 6, true, ["murphy", "probrob"]],
       ["PCA as maximum likelihood of a latent linear model", "Ties SVD to statistics and shows why PCA is not just a trick.", 6, false, ["18065", "murphy"]],
     ],
@@ -85,19 +93,22 @@ const MATH: [string, Row[]][] = [
   [
     "Measure and probability",
     [
-      ["σ-algebras, measurable functions, Lebesgue integral", "The minimum viable dose. MVA's probability courses and Vershynin assume it.", 6, true, ["vershynin", "18650"]],
-      ["Monotone and dominated convergence", "The two theorems you will actually cite when swapping limits and integrals.", 6, true, ["vershynin"]],
-      ["Fubini-Tonelli and change of variables", "Used constantly in ML derivations, especially generative models.", 6, false, ["vershynin"]],
-      ["Conditional expectation as an L² projection", "The most useful reframing in probability; makes filters and martingales obvious.", 6, true, ["vershynin"]],
-      ["Filtrations, martingales, Doob's inequality", "Prerequisite for concentration proofs and for stochastic-calculus courses at MVA.", 6, false, ["vershynin"]],
-      ["Modes of convergence and their relations", "Where 'converges' claims in papers become precise.", 6, false, ["vershynin", "18650"]],
+      ["σ-algebras, measurable functions, Lebesgue integral", "Le Gall ch.1. Real analysis prerequisite for everything downstream: probability as measure, expectation as integral, and eventually Vershynin and MVA's probability courses.", 2, true, ["legall", "kortchemski"]],
+      ["Monotone and dominated convergence", "Le Gall ch.1-2. The two theorems you will actually cite when swapping limits and integrals.", 2, true, ["legall", "kortchemski"]],
+      ["Fubini-Tonelli and change of variables", "Le Gall ch.2. Used constantly in ML derivations, especially generative models.", 2, false, ["legall", "kortchemski"]],
+      ["Independence, product measures, Borel-Cantelli lemmas", "Le Gall ch.3. The formal definition every probability statement after this silently uses.", 3, true, ["legall", "kortchemski"]],
+      ["Laws of large numbers, weak and strong", "Le Gall ch.3-4. Why averaging works, made precise; the base case Monte Carlo and SGD both lean on.", 3, true, ["legall", "kortchemski"]],
+      ["Central limit theorem and characteristic functions", "Le Gall ch.4. Where confidence intervals and the Gaussian's ubiquity actually come from.", 3, true, ["legall", "kortchemski"]],
+      ["Conditional expectation as an L² projection", "Le Gall ch.5. The most useful reframing in probability; makes filters and martingales obvious.", 6, true, ["legall", "kortchemski"]],
+      ["Filtrations, martingales, Doob's inequality", "Le Gall ch.6. Prerequisite for concentration proofs and for stochastic-calculus courses at MVA.", 6, false, ["legall", "kortchemski"]],
+      ["Modes of convergence and their relations", "Le Gall ch.4. Where 'converges' claims in papers become precise — a.s., in probability, in L^p, in distribution.", 3, false, ["legall", "18650"]],
     ],
   ],
   [
     "High-dimensional probability",
     [
       ["Sub-gaussian and sub-exponential tails, MGF bounds", "The workhorse tail bounds of learning theory.", 7, true, ["vershynin"]],
-      ["Hoeffding, Bernstein, Chernoff, McDiarmid", "Proofs, not statements — this is what generalization bounds are made of.", 6, true, ["vershynin", "bach"]],
+      ["Hoeffding, Bernstein, Chernoff, McDiarmid", "Proofs, not statements — this is what generalization bounds are made of. Needs only independence and LLN/CLT from Phase 3, not the full measure-theoretic machinery, so it can gate Phase 4's learning theory on schedule.", 3, true, ["vershynin", "bach"]],
       ["Concentration of the norm; near-orthogonality in high dimension", "Why high-dimensional geometry is counter-intuitive and why embeddings work.", 7, false, ["vershynin"]],
       ["Covering and packing numbers, ε-nets", "The bridge from geometry to uniform bounds.", 7, true, ["vershynin"]],
       ["Operator norms of random matrices, matrix Bernstein", "Random matrix theory at the level MVA's course expects.", 7, false, ["vershynin", "18065"]],

@@ -1,13 +1,12 @@
 import type { RawWeek } from "./raw";
 
 /**
- * Weeks 34-68 — Phases 5-6 (3 May 2027 → 2 Jan 2028).
+ * Weeks 39-73 — Phases 5-6.
  * Syntax: "!" prefix = prerequisite gate. "@a,b" suffix = resource ids.
  */
 export const weeksP2: RawWeek[] = [
-  // ───────── PHASE 5 — Transformers, geometry, dynamics (W34-W51) ─────────
   [
-    34,
+    39,
     "SVD as the master factorization",
     "Year 2 opens on numerical linear algebra. You know abstract algebra; you do not yet know which factorization to reach for when a matrix is 40k x 40k and badly conditioned. Everything downstream — PCA, least squares, low-rank adapters, bundle adjustment, PCA on features — is this.",
     {
@@ -30,7 +29,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    35,
+    40,
     "Least squares, QR, conditioning",
     "The single most reused computation in vision and ML, plus the vocabulary to say why your solver blew up.",
     {
@@ -53,7 +52,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    36,
+    41,
     "Eigenvalue algorithms",
     "How iterative solvers actually work, so 'it converged' stops being a mystery.",
     {
@@ -76,7 +75,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    37,
+    42,
     "Randomized NLA and structure from motion",
     "Low-rank thinking is the bridge between your linear algebra and modern ML systems.",
     {
@@ -96,12 +95,11 @@ export const weeksP2: RawWeek[] = [
         "6-DOF arm: full CAD, reduction choice (belt vs cycloidal vs harmonic), print/order the first joint @fusion,modern-robotics",
         "Order arm parts — motors, drivers, encoders — against the BOM @fusion",
       ],
-      // deliverable below
     },
     "A COLMAP reconstruction of a real scene you shot, plus your own 8-point + RANSAC + triangulation pipeline reproducing the two-view geometry on the same images.",
   ],
   [
-    38,
+    43,
     "Numerical optimization I",
     "Boyd told you what a convex problem is. Nocedal tells you what the solver does — this is the half MVA assumes and most students skip.",
     {
@@ -124,7 +122,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    39,
+    44,
     "Numerical optimization II",
     "Quasi-Newton and trust regions — the methods that are actually in SciPy, Ceres and every SLAM backend.",
     {
@@ -147,7 +145,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    40,
+    45,
     "Large-scale optimization and autodiff",
     "Why L-BFGS, CG and Adam behave the way they do, and what a tape actually stores.",
     {
@@ -170,7 +168,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    41,
+    46,
     "Constrained solvers, first pass",
     "Cross the line from 'I can recognise a convex problem' to 'I can write the solver'.",
     {
@@ -193,7 +191,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    42,
+    47,
     "Semester close-out",
     "Consolidate before the summer. Nothing new — prove to yourself the year held.",
     {
@@ -214,9 +212,8 @@ export const weeksP2: RawWeek[] = [
     },
     "6-DOF arm doing repeatable vision-guided pick-and-place, plus a written NLA/optimization self-assessment with your grade on it.",
   ],
-  // ───────── Summer sprint 2027 (W43-W51) — optional / light ─────────
   [
-    43,
+    48,
     "Summer sprint: arm to spec",
     "You said you take two months off. This block is intentionally optional — hardware only, no reading load. Anything you do here is upside.",
     {
@@ -224,11 +221,13 @@ export const weeksP2: RawWeek[] = [
         "Arm: full gravity + friction compensation, impedance control on one axis @modern-robotics",
         "Arm: repeatability measurement with a dial indicator; write the number down @modern-robotics",
       ],
-      ml: ["Optional: 1h/week keeping the training loop warm — nothing new @d2l"],
+      ml: [
+        "Optional: 1h/week keeping the training loop warm — nothing new @d2l",
+      ],
     },
   ],
   [
-    44,
+    49,
     "Summer sprint: hand design",
     "The tendon hand is your best manipulation-research asset. Design it properly rather than fast.",
     {
@@ -239,7 +238,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    45,
+    50,
     "Summer sprint: hand build",
     "Print, assemble, break, reprint.",
     {
@@ -250,7 +249,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    46,
+    51,
     "Summer sprint: hand control",
     "From twitching servos to a controllable end-effector.",
     {
@@ -261,13 +260,13 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    47,
+    52,
     "Summer: rest week",
     "Deliberately empty. Two years is long; burning out in month 11 is the main failure mode of plans like this.",
     {},
   ],
   [
-    48,
+    53,
     "Summer sprint: teleop data",
     "Data is the scarce resource in robot learning. Build the collection rig now and you spend year 2 training, not plumbing.",
     {
@@ -275,11 +274,13 @@ export const weeksP2: RawWeek[] = [
         "Build a teleoperation setup (leader arm or VR/glove) and record synchronized video + joint states @act,leaphand",
         "Collect 50+ demonstrations of one manipulation task; write the dataset loader @act",
       ],
-      ml: ["Read the ACT paper and the ALOHA setup carefully before recording anything @act"],
+      ml: [
+        "Read the ACT paper and the ALOHA setup carefully before recording anything @act",
+      ],
     },
   ],
   [
-    49,
+    54,
     "Summer sprint: imitation learning",
     "Your first learned policy on your own hardware. This is the moment the ML track stops being theory.",
     {
@@ -287,41 +288,52 @@ export const weeksP2: RawWeek[] = [
         "!Train an ACT-style transformer policy on your teleop dataset; report success rate @act",
         "Train a diffusion policy on the same data and compare sample efficiency @diffusion-policy",
       ],
-      rob: ["Deploy the policy on the arm+hand, measure success over 30 trials on video @act,diffusion-policy"],
+      rob: [
+        "Deploy the policy on the arm+hand, measure success over 30 trials on video @act,diffusion-policy",
+      ],
     },
   ],
   [
-    50,
+    55,
     "Summer sprint: failure analysis",
     "The interesting part of robot learning is why it fails.",
     {
       ml: [
         "Ablate: dataset size, action chunking, image augmentation, backbone (ResNet vs DINOv2) @act,dinov2",
       ],
-      rob: ["Fix the top two hardware causes of policy failure (backlash, tendon slack, camera drift) @leaphand"],
+      rob: [
+        "Fix the top two hardware causes of policy failure (backlash, tendon slack, camera drift) @leaphand",
+      ],
     },
   ],
   [
-    51,
+    56,
     "Summer close: year 1 review",
     "Write it down or it did not happen. This is also the raw material for MVA applications and internship CVs.",
     {
-      math: ["Re-derive from memory: KKT, BFGS update, SVD optimality. Note the gaps and schedule them @nocedal,trefethen"],
-      cs: ["Publish the SfM + VO repo with README, benchmarks and honest limitations @cs231a,colmap"],
-      ml: ["Write a 6-page technical report on the imitation-learning experiment, paper-style @act,diffusion-policy"],
-      rob: ["Portfolio video: car, arm, hand, glider — 90 seconds, no music, just results @f1tenth"],
+      math: [
+        "Re-derive from memory: KKT, BFGS update, SVD optimality. Note the gaps and schedule them @nocedal,trefethen",
+      ],
+      cs: [
+        "Publish the SfM + VO repo with README, benchmarks and honest limitations @cs231a,colmap",
+      ],
+      ml: [
+        "Write a 6-page technical report on the imitation-learning experiment, paper-style @act,diffusion-policy",
+      ],
+      rob: [
+        "Portfolio video: car, arm, hand, glider — 90 seconds, no music, just results @f1tenth",
+      ],
     },
     "Year-1 portfolio: 4 hardware projects on video, 3 public repos, 1 paper-style report, and a written gap list driving Phase 6.",
   ],
-  // ───────── PHASE 6 — Master-level (W52-W68) ─────────
   [
-    52,
+    57,
     "Statistics from scratch",
     "You have measure-free probability from prépa. MVA assumes real statistical inference: estimators, asymptotics, and the vocabulary of learning theory. Start here.",
     {
       math: [
-        "!18.650 L1-4: statistical models, estimators, bias/variance, consistency, MLE @18650",
-        "Derive MLE for Bernoulli, Gaussian, exponential families by hand @18650,murphy",
+        "!18.650 L1-4: statistical models, estimators, bias/variance, consistency, MLE @wasserman,18650",
+        "Derive MLE for Bernoulli, Gaussian, exponential families by hand @wasserman,18650,murphy",
       ],
       cs: [
         "!CS:APP ch.1-2 + Data Lab: bit manipulation, two's complement, IEEE 754 edge cases @csapp",
@@ -338,13 +350,13 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    53,
+    58,
     "Asymptotics",
     "The delta method and Fisher information are how statisticians talk about the same second-order behaviour Nocedal gave you.",
     {
       math: [
-        "18.650 L5-8: CLT for estimators, Fisher information, Cramér-Rao, delta method @18650",
-        "Prove asymptotic normality of the MLE in a one-parameter family @18650",
+        "18.650 L5-8: CLT for estimators, Fisher information, Cramér-Rao, delta method @wasserman,18650",
+        "Prove asymptotic normality of the MLE in a one-parameter family @wasserman,18650",
       ],
       cs: [
         "!CS:APP ch.3 + Bomb Lab: x86-64, stack frames, calling conventions, reading disassembly @csapp",
@@ -360,13 +372,13 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    54,
+    59,
     "Testing and cache-aware code",
     "Hypothesis testing you will need to read papers honestly; the memory hierarchy you will need to make anything fast.",
     {
       math: [
-        "18.650 L9-13: hypothesis testing, Neyman-Pearson, Wald/LR tests, p-values and their misuse @18650",
-        "Confidence intervals and the bootstrap; implement a bootstrap CI on your own policy success rates @18650",
+        "18.650 L9-13: hypothesis testing, Neyman-Pearson, Wald/LR tests, p-values and their misuse @wasserman,18650",
+        "Confidence intervals and the bootstrap; implement a bootstrap CI on your own policy success rates @wasserman,18650",
       ],
       cs: [
         "!CS:APP ch.5-6 + Cache Lab: program optimization, locality, cache blocking @csapp",
@@ -381,12 +393,12 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    55,
+    60,
     "Bayesian inference and systems plumbing",
     "Priors, posteriors and conjugacy — the language of half of MVA — alongside the OS layer under every training run.",
     {
       math: [
-        "18.650 Bayesian chapters + Murphy ch.4-5: priors, conjugacy, posterior predictive, MAP vs MLE @18650,murphy",
+        "18.650 Bayesian chapters + Murphy ch.4-5: priors, conjugacy, posterior predictive, MAP vs MLE @wasserman,18650,murphy",
         "Gaussian identities you will reuse forever: marginals, conditionals, precision form @murphy,bishop-dl",
       ],
       cs: [
@@ -403,13 +415,13 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    56,
+    61,
     "Regression theory and virtual memory",
     "Least squares once more — this time as statistics, with the distributional claims attached.",
     {
       math: [
-        "18.650: linear regression theory, Gauss-Markov, ridge as MAP, GLMs and logistic regression @18650,murphy",
-        "Derive ridge's bias-variance tradeoff explicitly; connect to conditioning from Trefethen @18650,trefethen",
+        "18.650: linear regression theory, Gauss-Markov, ridge as MAP, GLMs and logistic regression @wasserman,18650,murphy",
+        "Derive ridge's bias-variance tradeoff explicitly; connect to conditioning from Trefethen @wasserman,18650,trefethen",
       ],
       cs: [
         "!CS:APP ch.9 + Malloc Lab: virtual memory, page tables, writing an allocator @csapp",
@@ -425,7 +437,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    57,
+    62,
     "Multivariate theory and concurrency",
     "PCA with proofs, and the concurrency knowledge that separates 'wrote a robot node' from 'wrote a robot system'.",
     {
@@ -447,13 +459,13 @@ export const weeksP2: RawWeek[] = [
     "A quadruped design review document: kinematics, actuator sizing from the SLIP/torque analysis, BOM, and a build schedule.",
   ],
   [
-    58,
-    "Measure theory, minimum viable",
-    "Not for elegance — MVA's probabilistic courses and Vershynin both assume it. Two weeks of targeted work, not a full course.",
+    63,
+    "Conditional expectation, first pass",
+    "Le Gall ch.5 opens. The measure and integration foundation is already yours from Phase 2 (W17-18) and independence/LLN/CLT from Phase 3 (W19-21) — this is where probability gets genuinely deeper, right before Vershynin needs it in Phase 7.",
     {
       math: [
-        "!σ-algebras, measurable functions, Lebesgue integral, monotone and dominated convergence @18650,vershynin",
-        "Fubini-Tonelli and change of variables — the two you actually use in ML derivations @vershynin",
+        "!Le Gall ch.5: conditional expectation, construction via Radon-Nikodym, first properties @legall,kortchemski",
+        "Kortchemski TD6: conditional expectation, 6 exercises @kortchemski",
       ],
       cs: [
         "!TUM Multiple View Geometry L1-4 (or HZ ch.2-4): projective geometry, transformations, camera models, rigorously @tum-mvg,hz",
@@ -468,17 +480,23 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    59,
+    64,
     "Toussaint sprint I",
     "Break week — no coursework. Two weeks of hardware and code, which is where project leaps actually come from.",
     {
-      cs: ["Implement stereo visual odometry in C++ from scratch: features, matching, PnP, local BA @orbslam3,hz"],
-      rob: ["Quadruped: machine and assemble all four legs, bench-test one leg's torque @cs123"],
-      ml: ["Optional: finish the DQN Atari run and write down what actually mattered @cleanrl"],
+      cs: [
+        "Implement stereo visual odometry in C++ from scratch: features, matching, PnP, local BA @orbslam3,hz",
+      ],
+      rob: [
+        "Quadruped: machine and assemble all four legs, bench-test one leg's torque @cs123",
+      ],
+      ml: [
+        "Optional: finish the DQN Atari run and write down what actually mattered @cleanrl",
+      ],
     },
   ],
   [
-    60,
+    65,
     "Toussaint sprint II",
     "Break week — the SLAM stack becomes yours.",
     {
@@ -492,13 +510,13 @@ export const weeksP2: RawWeek[] = [
     "Your own stereo VO/SLAM in C++ with loop closure, benchmarked (ATE/RPE) against ORB-SLAM3 on KITTI or EuRoC.",
   ],
   [
-    61,
-    "Conditional expectation and n-view geometry",
-    "Conditional expectation as an L² projection is the single most useful reframing in probability. Then: geometry beyond two views.",
+    66,
+    "Martingales and n-view geometry",
+    "Le Gall ch.5-6. Conditional expectation as an L² projection is the single most useful reframing in probability; martingales fall out of it immediately. Then: geometry beyond two views.",
     {
       math: [
-        "!Conditional expectation as orthogonal projection in L²; tower property, martingale definition @vershynin,18650",
-        "Filtrations, stopping times, Doob's inequality — enough to read concentration proofs @vershynin",
+        "!Conditional expectation as orthogonal projection in L²; tower property, martingale definition @legall,kortchemski",
+        "Le Gall ch.6: filtrations, stopping times, Doob's inequality — enough to read concentration proofs @legall,kortchemski",
       ],
       cs: [
         "HZ ch.9-11: fundamental matrix estimation properly, trifocal tensor, n-view reconstruction @hz,tum-mvg",
@@ -513,12 +531,12 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    62,
-    "Concentration inequalities",
-    "The core technical tool of statistical learning theory. Learn it properly now; Vershynin in Phase 7 assumes it.",
+    67,
+    "Concentration inequalities, rigorously",
+    "The core technical tool of statistical learning theory. You proved Markov/Chebyshev/Hoeffding lightly back in W20 to unblock Bach's Phase 4 entry — this is the rigorous second pass, with Bernstein and Chernoff via MGFs, that Vershynin in Phase 7 assumes.",
     {
       math: [
-        "!Markov, Chebyshev, Chernoff, Hoeffding, Bernstein, McDiarmid — proofs, not statements @vershynin,bach",
+        "!Chernoff and Bernstein via MGF bounds; McDiarmid's bounded-differences inequality, proved @vershynin,bach",
         "Apply: how many demonstrations do you need to estimate your policy's success rate to ±3%? @vershynin",
       ],
       cs: [
@@ -534,7 +552,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    63,
+    68,
     "Constrained optimization, numerically",
     "SQP, penalties and augmented Lagrangians — what MPC and every robotics QP solver runs on.",
     {
@@ -556,7 +574,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    64,
+    69,
     "Interior point and model-based RL",
     "Close the optimization arc: you will have implemented every solver class you cite.",
     {
@@ -577,7 +595,7 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    65,
+    70,
     "Exploration and estimation on hardware",
     "Where sim-to-real starts to bite, and where the estimation theory pays off.",
     {
@@ -597,36 +615,54 @@ export const weeksP2: RawWeek[] = [
     },
   ],
   [
-    66,
+    71,
     "Integration week",
     "Make the pieces one system instead of seven demos.",
     {
-      math: ["Timed MVA-style exam: optimization + statistics + probability, 3 hours, graded @aspremon,mva-cours"],
-      cs: ["Run your own VO against ORB-SLAM3 on the quadruped's onboard camera; write the comparison @orbslam3"],
-      ml: ["Train a locomotion policy in MuJoCo with PPO; compare against your MPC controller @mujoco,cs285"],
-      rob: ["Quadruped: autonomous walk to a visually-specified goal, using your own SLAM stack @cs123,orbslam3"],
+      math: [
+        "Timed MVA-style exam: optimization + statistics + probability, 3 hours, graded @aspremon,mva-cours",
+      ],
+      cs: [
+        "Run your own VO against ORB-SLAM3 on the quadruped's onboard camera; write the comparison @orbslam3",
+      ],
+      ml: [
+        "Train a locomotion policy in MuJoCo with PPO; compare against your MPC controller @mujoco,cs285",
+      ],
+      rob: [
+        "Quadruped: autonomous walk to a visually-specified goal, using your own SLAM stack @cs123,orbslam3",
+      ],
     },
   ],
   [
-    67,
+    72,
     "Christmas sprint I",
     "Break week. Big-block work: the learned-vs-model-based comparison is a genuinely portfolio-grade result.",
     {
       ml: [
         "Full study: PPO policy vs convex MPC on the quadruped — sample efficiency, robustness, compute @cs285,mujoco",
       ],
-      rob: ["Quadruped: rough-terrain trial, log falls and diagnose each one @cs123"],
+      rob: [
+        "Quadruped: rough-terrain trial, log falls and diagnose each one @cs123",
+      ],
     },
   ],
   [
-    68,
+    73,
     "Christmas sprint II — mid-plan review",
     "Halfway. Be brutal about what is actually solid, then set Phase 7's targets.",
     {
-      math: ["Gap audit: list every topic you cannot re-derive from memory; schedule the top five @nocedal,18650"],
-      cs: ["Publish the SLAM repo with benchmarks; write the design doc as if onboarding a teammate @orbslam3"],
-      ml: ["Write the RL foundations summary: 12 algorithms, one paragraph each, from memory @sutton,cs285"],
-      rob: ["Portfolio update: quadruped + arm + hand video, plus a written system architecture diagram @cs123"],
+      math: [
+        "Gap audit: list every topic you cannot re-derive from memory; schedule the top five @nocedal,wasserman,18650",
+      ],
+      cs: [
+        "Publish the SLAM repo with benchmarks; write the design doc as if onboarding a teammate @orbslam3",
+      ],
+      ml: [
+        "Write the RL foundations summary: 12 algorithms, one paragraph each, from memory @sutton,cs285",
+      ],
+      rob: [
+        "Portfolio update: quadruped + arm + hand video, plus a written system architecture diagram @cs123",
+      ],
     },
     "Mid-plan checkpoint: statistics + measure theory + full Nocedal done, CS:APP done, own SLAM benchmarked, 12 RL algorithms implemented, quadruped walking.",
   ],

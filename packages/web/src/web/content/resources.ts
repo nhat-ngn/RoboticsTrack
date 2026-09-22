@@ -17,7 +17,7 @@ export const resources: Resource[] = [
     effort: "~730 pp — plan ch.1-5 + 9-11 seriously (~120 h)",
     verdict:
       "The book you asked for, and the right call. Ch. 2-5 (sets, functions, problems, duality) are the actual master-level content; ch. 9-11 (unconstrained, equality, interior-point) are what make you dangerous in ML. Skip ch. 6-8 on first pass, mine them for examples later. Prose is unusually clean — read it linearly, do 5-8 exercises per chapter, not more.",
-    when: "Phase 1-3 (W1-W25), revisited in Phase 6 for the MVA course.",
+    when: "Phase 1-3 (W1-W30), revisited in Phase 6 for the MVA course.",
   },
   {
     id: "ee364a",
@@ -30,7 +30,7 @@ export const resources: Resource[] = [
     effort: "19 × 80 min + slides + homework",
     verdict:
       "Boyd teaching his own book, with the 2023 recording quality. Use lectures as a first pass over each chapter (he tells you what matters), then read. Homework sets on the course site are the real value — they force CVXPY modelling, which is the 'abstract → real' bridge you said you're missing.",
-    when: "Paired 1:1 with the book, W3-W25.",
+    when: "Paired 1:1 with the book, W3-W30.",
   },
   {
     id: "ee364a-site",
@@ -56,7 +56,7 @@ export const resources: Resource[] = [
     effort: "~40 h",
     verdict:
       "Subgradients, proximal methods, ADMM, stochastic programming, decomposition. This is the layer that connects convexity to what optimizers actually do in deep learning. Only after 364a is fully digested.",
-    when: "Phase 6-7 (W52-W85).",
+    when: "Phase 6-7 (W57-W90).",
   },
   {
     id: "rouviere",
@@ -81,8 +81,60 @@ export const resources: Resource[] = [
     rating: 4,
     effort: "36 lectures, watch at 1.5× (~25 h)",
     verdict:
-      "Not a proof course — a 'what linear algebra actually does in ML' course. SVD, low-rank, pseudo-inverse, norms, gradient descent geometry. You already have the algebra (13/20 X); this gives it computational meaning. Skip 18.06, you don't need it.",
-    when: "Phase 1-2, in parallel with Boyd ch.2-3.",
+      "Not a proof course — a 'what linear algebra actually does in ML' course. SVD, low-rank, pseudo-inverse, norms, gradient descent geometry. You already have the algebra (13/20 X) from 18.06/Strang's book, run concurrently and self-paced from Phase 1 (see `1806`); this course gives that algebra computational meaning. The deep pass is Phase 5, not here.",
+    when: "Phase 1-2 lightly, then the deep pass in Phase 5 (W39-W47).",
+  },
+  {
+    id: "1806",
+    title: "Linear Algebra (18.06) + Introduction to Linear Algebra",
+    by: "Gilbert Strang, MIT OCW / Wellesley-Cambridge Press",
+    type: "course",
+    url: "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/",
+    tracks: ["math"],
+    rating: 4,
+    effort: "Self-paced, concurrent — you already own both and are partway through (~20-30 h remaining)",
+    verdict:
+      "You already have this and are studying it — it is not new material, so it gets no dedicated weeks of its own. It is the foundational linear algebra (elimination, four fundamental subspaces, eigendecomposition, positive-definite matrices, SVD from first principles) that 18.065, Trefethen, PCA, and every numerical-optimization week quietly assume. Treat it as a concurrent background thread from Phase 1 onward and finish it before Phase 5's NLA deep dive; it is referenced as a supporting resource wherever a task assumes fluency with rank, eigenvectors, or the SVD, not duplicated into new tasks.",
+    when: "Concurrent, self-paced, Phase 1 through Phase 5 — finish before W39.",
+  },
+  {
+    id: "legall",
+    title: "Intégration, probabilités et processus stochastiques",
+    by: "Jean-François Le Gall (École polytechnique / free PDF)",
+    type: "book",
+    url: "https://www.imo.universite-paris-saclay.fr/~jean-francois.legall/IPPS.pdf",
+    tracks: ["math", "ml"],
+    rating: 5,
+    effort: "~350 pp — ch.1-6 seriously (~90 h across Phases 2, 3 and 6)",
+    verdict:
+      "Now the spine of the probability half of the maths track, replacing the measure-free treatment the old plan deferred to Phase 6. Ch.1-2 (measure and integration: σ-algebras, Lebesgue integral, convergence theorems, Fubini) go early, in Phase 2, because everything probabilistic downstream — LLN, CLT, concentration, conditional expectation, Vershynin, Bach — is measure-theoretic underneath. Ch.3-4 (independence, LLN, CLT, characteristic functions) anchor Phase 3, ahead of Bach's first use of concentration inequalities. Ch.5-6 (conditional expectation, martingales, stochastic processes) return in Phase 6, right where the old plan's 'measure theory minimum viable' week used to sit — except now it is a continuation, not an introduction. Pair every chapter with the matching Kortchemski TD.",
+    when: "Phase 2 (ch.1-2), Phase 3 (ch.3-4), Phase 6 (ch.5-6).",
+  },
+  {
+    id: "kortchemski",
+    title: "TDs de probabilités et processus stochastiques (ENS / X)",
+    by: "Igor Kortchemski",
+    type: "practice",
+    url: "https://www.imo.universite-paris-saclay.fr/~igor.kortchemski/",
+    tracks: ["math"],
+    rating: 4,
+    effort: "1 TD sheet per Le Gall chapter, ~3-4 h each",
+    verdict:
+      "The exercise sheets Le Gall's book doesn't give you enough of — sharper, more agrég/X-flavoured, and free. Use one TD per Le Gall chapter as the 'can I actually use this' check; do it before moving on, not after, since this is a track where you start strong on abstraction and weak on turning it into problem-solving speed.",
+    when: "Paired 1:1 with `legall`, every chapter, Phases 2, 3 and 6.",
+  },
+  {
+    id: "wasserman",
+    title: "All of Statistics",
+    by: "Larry Wasserman (Springer)",
+    type: "book",
+    url: "https://link.springer.com/book/10.1007/978-0-387-21736-9",
+    tracks: ["math", "ml"],
+    rating: 5,
+    effort: "~460 pp — ch.6-13, 18, 22 (~50 h)",
+    verdict:
+      "Your primary statistics text, replacing 18.650 as the spine (18.650 stays as a secondary cross-check — Rigollet's asymptotics are stated slightly more carefully in places, worth a glance after each Wasserman chapter, not a full re-read). Wasserman is faster, denser and covers more ground per page: point estimation, MLE, testing, bootstrap, Bayesian inference, regression, all built on the measure-theoretic probability Le Gall already gave you by Phase 6, so the asymptotics stop being asserted and start being things you can re-derive.",
+    when: "Phase 6 (W57-W73), after Le Gall's probability foundation (Phases 2-3) is in place.",
   },
   {
     id: "trefethen",
@@ -120,8 +172,8 @@ export const resources: Resource[] = [
     rating: 5,
     effort: "24 lectures (~35 h)",
     verdict:
-      "Rigollet is a former MVA-sphere probabilist and this is the cleanest bridge from prépa probability to statistical learning: MLE, Fisher information, delta method, hypothesis testing, regression, PCA — all with the asymptotics stated properly. MVA assumes exactly this.",
-    when: "Phase 4-5 (W26-W42). Prerequisite for Bach and for MVA theory courses.",
+      "Demoted to secondary — Wasserman (`wasserman`) is now the primary statistics text, built on the measure-theoretic probability Le Gall gives you first. Keep 18.650 as a cross-check after each Wasserman chapter in Phase 6: Rigollet's asymptotic normality and delta-method treatments are stated slightly more carefully in places, and the lecture format is a fast way to catch anything Wasserman's prose glosses over. Not a full re-read.",
+    when: "Phase 6 (W57-W73), as a secondary cross-check alongside Wasserman.",
   },
   {
     id: "vershynin",
@@ -134,7 +186,7 @@ export const resources: Resource[] = [
     effort: "Ch. 1-6 (~40 h)",
     verdict:
       "Concentration inequalities, sub-gaussian tails, random matrices, Johnson-Lindenstrauss. This is the toolkit that separates 'I use ML' from 'I can read a NeurIPS proof'. Hard but self-contained and beautifully written.",
-    when: "Phase 7 (W69-W85) — direct MVA prep.",
+    when: "Phase 7 (W74-W90) — direct MVA prep.",
   },
   {
     id: "bach",
@@ -227,7 +279,7 @@ export const resources: Resource[] = [
     effort: "24 lectures (~50 h)",
     verdict:
       "Divide & conquer, randomization, amortized analysis, network flow, NP-completeness, approximation. This is the master-level algorithms layer and where hard interview questions actually come from.",
-    when: "Phase 3-4 (W17-W33).",
+    when: "Phase 3-4 (W19-W38).",
   },
   {
     id: "clrs",
@@ -292,7 +344,7 @@ export const resources: Resource[] = [
     effort: "150 problems (~80 h)",
     verdict:
       "The interview-shaped complement to CSES: pattern-grouped, with clean video explanations. Do it in year 2 when the algorithms are already there — otherwise you memorise patterns without understanding.",
-    when: "Phase 6-8 (W52+), 4 problems/week.",
+    when: "Phase 6-8 (W57+), 4 problems/week.",
   },
   {
     id: "learncpp",
@@ -344,7 +396,7 @@ export const resources: Resource[] = [
     effort: "Book ch. 1-6, 8-9 + bomb/attack/malloc labs (~80 h)",
     verdict:
       "The course that turns a 'coder' into someone who understands machines: memory hierarchy, cache behaviour, linking, exceptions, concurrency. The labs (bomb, attack, cachelab, malloc) are the best assignments in undergraduate CS, full stop. Also the source of the hardest non-algorithmic interview questions and the reason your CUDA/embedded code will be fast.",
-    when: "Phase 4-6 (W26-W68). Prerequisite for serious CUDA and embedded work.",
+    when: "Phase 4-6 (W31-W73). Prerequisite for serious CUDA and embedded work.",
   },
   {
     id: "ostep",
@@ -411,7 +463,7 @@ export const resources: Resource[] = [
     effort: "~60 short videos (~25 h)",
     verdict:
       "The best explanation of classical vision that exists on video: image formation, radiometry, features, stereo, optical flow — each in a tight 10-20 min module with real optics. Watch this BEFORE any deep-learning vision course; it's the part that makes you good at the racing car and the drone, where a CNN is often the wrong tool.",
-    when: "Phase 2-3 (W8-W25).",
+    when: "Phase 2-3 (W8-W30).",
   },
   {
     id: "szeliski",
@@ -437,7 +489,7 @@ export const resources: Resource[] = [
     effort: "Notes + 3 assignments (~50 h)",
     verdict:
       "Famous for good reason, but the current recorded lectures are patchy — the *notes* and *assignments* are the real asset (build a CNN and backprop from scratch in numpy). Use Justin Johnson's Michigan course for video and CS231n for assignments.",
-    when: "Phase 3-4 (W17-W33).",
+    when: "Phase 3-4 (W19-W38).",
   },
   {
     id: "eecs498",
@@ -476,7 +528,7 @@ export const resources: Resource[] = [
     effort: "14 lectures (~25 h) + exercises",
     verdict:
       "Rigorous, Lie-group-flavoured multiple view geometry from one of the best SLAM groups in the world. Cremers derives SE(3), the essential matrix, bundle adjustment and direct methods properly. Exactly the mathematical register MVA expects — and it makes Hartley & Zisserman readable.",
-    when: "Phase 5-6 (W34-W68). Prerequisite for SLAM.",
+    when: "Phase 5-6 (W39-W73). Prerequisite for SLAM.",
   },
   {
     id: "hz",
@@ -595,7 +647,7 @@ export const resources: Resource[] = [
     effort: "5 assignments, brutal (~120 h)",
     verdict:
       "You build a tokenizer, a transformer, the training loop, systems-level optimizations (flash attention, distributed), scaling laws, alignment. This is the deepest possible answer to 'I want to understand transformers and train/fine-tune from scratch'. Only attempt after Karpathy + solid PyTorch; then it is career-defining. Assignments and lecture videos are public.",
-    when: "Phase 7 (W69-W85). Gate: Karpathy course complete + CUDA basics.",
+    when: "Phase 7 (W74-W90). Gate: Karpathy course complete + CUDA basics.",
   },
   {
     id: "cs224n",
@@ -634,7 +686,7 @@ export const resources: Resource[] = [
     effort: "3 h with pen",
     verdict:
       "Read it three times across the plan: once early (you'll understand 40%), once after implementing attention (90%), once when studying scaling (you'll see what they got lucky with).",
-    when: "W20, W45, W75.",
+    when: "W25, W50, W80.",
   },
   {
     id: "resnet",
@@ -686,7 +738,7 @@ export const resources: Resource[] = [
     effort: "Ch. 1-13 + exercises (~60 h)",
     verdict:
       "Still unmatched for foundations: bandits, MDPs, DP, MC, TD, n-step, function approximation, policy gradient. Do the programming exercises (gridworld, blackjack, mountain car) — they're short and they build correct intuition that deep RL courses assume.",
-    when: "Phase 5-6 (W34-W68).",
+    when: "Phase 5-6 (W39-W73).",
   },
   {
     id: "silver",
@@ -712,7 +764,7 @@ export const resources: Resource[] = [
     effort: "23 lectures + 5 homeworks (~80 h)",
     verdict:
       "The deep RL course, and Levine's group is the robot-learning group. Policy gradients → actor-critic → model-based → offline RL → imitation. Homeworks are real implementations. This is the direct bridge from your ML track to your quadruped and arm.",
-    when: "Phase 7 (W69-W85). Gate: Sutton ch.1-13 + PyTorch fluency.",
+    when: "Phase 7 (W74-W90). Gate: Sutton ch.1-13 + PyTorch fluency.",
   },
   {
     id: "spinningup",
@@ -792,7 +844,7 @@ export const resources: Resource[] = [
     effort: "Book ch. 2-6, 8, 11 + 6-course specialization (~70 h)",
     verdict:
       "The reference for arm robotics, and it uses screw theory / Lie groups from page one — which is both the modern formulation and excellent maths training. Free PDF, free videos, free software library. Chapters 3-6 (rigid motions, forward/inverse kinematics, velocity kinematics) are exactly your 6-DOF arm and your tendon hand.",
-    when: "Phase 2-4 (W8-W33). Prerequisite for the arm, the hand, the quadruped.",
+    when: "Phase 2-4 (W8-W38). Prerequisite for the arm, the hand, the quadruped.",
   },
   {
     id: "articulated",
@@ -844,7 +896,7 @@ export const resources: Resource[] = [
     effort: "Ch. 1-11 as notebooks (~25 h)",
     verdict:
       "Jupyter-native, builds from g-h filters to KF/EKF/UKF with plots at each step. Fixes state estimation permanently — the skill that makes your drone and car work and that most students fake.",
-    when: "Phase 3-4 (W17-W33). Prerequisite for SLAM and sensor fusion.",
+    when: "Phase 3-4 (W19-W38). Prerequisite for SLAM and sensor fusion.",
   },
   {
     id: "probrob",
@@ -870,7 +922,7 @@ export const resources: Resource[] = [
     effort: "~30 h",
     verdict:
       "Free, complete, and taught by someone who has shipped SLAM systems: ICP, graph-based SLAM, particle filters, photogrammetry. Better paced than the book and the exercises are in Python.",
-    when: "Phase 5-6 (W34-W68).",
+    when: "Phase 5-6 (W39-W73).",
   },
   {
     id: "underactuated",
@@ -883,7 +935,7 @@ export const resources: Resource[] = [
     effort: "Notes + notebooks (~60 h)",
     verdict:
       "The intellectual heart of legged/flying robotics: dynamics, LQR, trajectory optimization, Lyapunov analysis, contact, and the honest version of 'RL vs control'. Requires your optimization track to be done first — and then it's the best thing you'll study all year. Interactive Drake notebooks.",
-    when: "Phase 6-8 (W52+). Gate: Boyd ch.1-5 + Modern Robotics ch.8.",
+    when: "Phase 6-8 (W57+). Gate: Boyd ch.1-5 + Modern Robotics ch.8.",
   },
   {
     id: "manipulation",
@@ -922,7 +974,7 @@ export const resources: Resource[] = [
     effort: "~35 videos (~12 h)",
     verdict:
       "State-space control, controllability, LQR, Kalman, robust control, in short, extremely clear videos with MATLAB/Python demos. The fastest possible route from prépa linear algebra to controlling a real machine. Watch it before you tune another PID by hand.",
-    when: "Phase 2-3 (W8-W25).",
+    when: "Phase 2-3 (W8-W30).",
   },
   {
     id: "uavbook",

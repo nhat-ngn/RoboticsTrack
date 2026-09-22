@@ -1,13 +1,12 @@
 import type { RawWeek } from "./raw";
 
 /**
- * Weeks 69-105 — Phases 7-8 (3 Jan 2028 → 11 Sep 2028).
+ * Weeks 74-110 — Phases 7-8.
  * Syntax: "!" prefix = prerequisite gate. "@a,b" suffix = resource ids.
  */
 export const weeksP3: RawWeek[] = [
-  // ───────── PHASE 7 — CS336, CS285, high-dimensional probability (W69-W85) ─────────
   [
-    69,
+    74,
     "High-dimensional probability opens",
     "Vershynin is the book MVA's theory courses are quietly built on. You now have measure theory and concentration, so it is readable. In parallel: CS336, the single hardest and most valuable engineering block in this plan.",
     {
@@ -28,7 +27,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    70,
+    75,
     "Random vectors in high dimension",
     "The geometry of high dimensions is counter-intuitive and is exactly why ML works. Meanwhile you train your own LM.",
     {
@@ -49,7 +48,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    71,
+    76,
     "Random matrices and GPU kernels",
     "Covering numbers and nets on the maths side; Triton and FlashAttention on the systems side. Both are 'how it really works' weeks.",
     {
@@ -70,7 +69,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    72,
+    77,
     "Concentration without independence, and distributed training",
     "Two hard weeks in a row. Keep the robotics load light and protect the CS336 blocks.",
     {
@@ -90,7 +89,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    73,
+    78,
     "Quadratic forms, offline RL",
     "Hanson-Wright is the workhorse inequality; offline RL is the sub-field closest to your teleop dataset.",
     {
@@ -110,7 +109,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    74,
+    79,
     "Random processes and chaining",
     "Dudley's inequality and generic chaining — the deepest maths in the plan, and the direct entry to learning theory.",
     {
@@ -131,7 +130,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    75,
+    80,
     "VC dimension bridge, alignment",
     "Where high-dimensional probability turns into generalization bounds — and where LMs turn into products.",
     {
@@ -152,7 +151,7 @@ export const weeksP3: RawWeek[] = [
     "A trained LM you built from tokenizer to DPO, with a scaling-law fit and a benchmark table you can defend line by line.",
   ],
   [
-    76,
+    81,
     "February sprint I",
     "Break week. Use it on the dexterous-manipulation push — this is the work that gets read by MVA/robotics labs.",
     {
@@ -165,7 +164,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    77,
+    82,
     "February sprint II",
     "Break week. Deploy, measure, and write the numbers down.",
     {
@@ -178,7 +177,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    78,
+    83,
     "Matrix deviations, VLAs",
     "Back to coursework. The maths gets applied to matrix completion; the ML track meets vision-language-action models.",
     {
@@ -198,7 +197,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    79,
+    84,
     "Sparse recovery, sim-to-real",
     "Compressed sensing closes Vershynin; domain randomization opens the last robotics arc.",
     {
@@ -219,7 +218,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    80,
+    85,
     "Learning theory I",
     "Bach's book is the closest published thing to MVA's theory core. Nine weeks with it, starting now.",
     {
@@ -239,7 +238,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    81,
+    86,
     "Learning theory II",
     "Kernels and RKHS — heavily examined at MVA and genuinely useful.",
     {
@@ -260,7 +259,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    82,
+    87,
     "Learning theory III",
     "Rademacher complexity and the model-selection story. Also: the first serious interview simulation.",
     {
@@ -280,7 +279,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    83,
+    88,
     "Learning theory IV",
     "Local averaging and neural network theory — the last theory block before the research phase.",
     {
@@ -300,31 +299,40 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    84,
+    89,
     "April sprint I",
     "Break week. This is where the research project gets chosen — do not skip the literature work.",
     {
-      math: ["Bach ch.13: generalization of neural networks, NTK and beyond — statement level, honestly @bach"],
+      math: [
+        "Bach ch.13: generalization of neural networks, NTK and beyond — statement level, honestly @bach",
+      ],
       ml: [
         "Pick the research question. Write a 3-page proposal: gap, hypothesis, method, evaluation, risks @cs285,act",
       ],
-      rob: ["Prepare the experimental platform for the research project — freeze the hardware @leaphand,cs123"],
+      rob: [
+        "Prepare the experimental platform for the research project — freeze the hardware @leaphand,cs123",
+      ],
     },
   ],
   [
-    85,
+    90,
     "April sprint II — Phase 7 close",
     "Build the baselines before you build the idea. Almost every failed student project skips this.",
     {
-      cs: ["Reproduce two baselines exactly, with the authors' hyperparameters, and log the numbers @cs336,cleanrl"],
-      ml: ["Baseline table complete, evaluation harness written and version-controlled @cleanrl,act"],
-      rob: ["Data collection for the research project starts; dataset card written on day one @act"],
+      cs: [
+        "Reproduce two baselines exactly, with the authors' hyperparameters, and log the numbers @cs336,cleanrl",
+      ],
+      ml: [
+        "Baseline table complete, evaluation harness written and version-controlled @cleanrl,act",
+      ],
+      rob: [
+        "Data collection for the research project starts; dataset card written on day one @act",
+      ],
     },
     "A 3-page research proposal with two reproduced baselines and a working evaluation harness.",
   ],
-  // ───────── PHASE 8 — Research-grade work and MVA readiness (W86-W105) ─────────
   [
-    86,
+    91,
     "Research execution I",
     "Phase 8 has one job: produce something a lab would read, and be measurably MVA-ready. Coursework is now maintenance only.",
     {
@@ -335,45 +343,73 @@ export const weeksP3: RawWeek[] = [
       cs: [
         "Research code hygiene: config system, seeds, experiment tracking, reproducible runs from a clean clone @cs336,missing-semester",
       ],
-      ml: ["!Method v1 implemented and running; first result vs baseline, however bad @cs285,act"],
-      rob: ["Hardware reliability pass: fix everything that costs you an experiment run @leaphand,cs123"],
+      ml: [
+        "!Method v1 implemented and running; first result vs baseline, however bad @cs285,act",
+      ],
+      rob: [
+        "Hardware reliability pass: fix everything that costs you an experiment run @leaphand,cs123",
+      ],
     },
   ],
   [
-    87,
+    92,
     "Research execution II",
     "Iterate on the method. Keep an experiment log with dates — you will need it for the writeup.",
     {
-      math: ["Bach ch.10-11: optimization for machine learning, convex vs non-convex guarantees @bach,nocedal"],
-      cs: ["Profile and speed up the research pipeline 3x; experiment latency is the real bottleneck @cs336,csapp"],
-      ml: ["Ablate the method's two core design choices; keep or kill each on evidence @cs285"],
-      rob: ["Extend the evaluation to a second task to test generality @act,diffusion-policy"],
+      math: [
+        "Bach ch.10-11: optimization for machine learning, convex vs non-convex guarantees @bach,nocedal",
+      ],
+      cs: [
+        "Profile and speed up the research pipeline 3x; experiment latency is the real bottleneck @cs336,csapp",
+      ],
+      ml: [
+        "Ablate the method's two core design choices; keep or kill each on evidence @cs285",
+      ],
+      rob: [
+        "Extend the evaluation to a second task to test generality @act,diffusion-policy",
+      ],
     },
   ],
   [
-    88,
+    93,
     "Research execution III",
     "Statistical honesty week: your own results, with error bars.",
     {
-      math: ["Apply your statistics: bootstrap CIs, paired tests, multiple-comparison correction on your results @18650,vershynin"],
-      cs: ["Write the plotting and table-generation code once, properly, so results regenerate from scratch @fluent-python"],
-      ml: ["Seed sweep: 5 seeds per condition minimum; report variance, not just means @cleanrl,18650"],
-      rob: ["Blind evaluation protocol run by a clubmate, not you @act"],
+      math: [
+        "Apply your statistics: bootstrap CIs, paired tests, multiple-comparison correction on your results @wasserman,18650,vershynin",
+      ],
+      cs: [
+        "Write the plotting and table-generation code once, properly, so results regenerate from scratch @fluent-python",
+      ],
+      ml: [
+        "Seed sweep: 5 seeds per condition minimum; report variance, not just means @cleanrl,18650",
+      ],
+      rob: [
+        "Blind evaluation protocol run by a clubmate, not you @act",
+      ],
     },
   ],
   [
-    89,
+    94,
     "Paper reading rhythm",
     "MVA is a research master's. Reading fast and critically is a graded skill — practise it deliberately.",
     {
-      math: ["Read 2 theory papers from the MVA reading lists; write a half-page critique of each @mva-cours,bach"],
-      cs: ["Read 1 systems paper (SLAM or LLM systems) and reimplement its key figure @orbslam3,cs336"],
-      ml: ["Read 3 papers in your research area; note precisely what each one gets wrong @cs285,act"],
-      rob: ["Method v2 based on what the reading changed @act,diffusion-policy"],
+      math: [
+        "Read 2 theory papers from the MVA reading lists; write a half-page critique of each @mva-cours,bach",
+      ],
+      cs: [
+        "Read 1 systems paper (SLAM or LLM systems) and reimplement its key figure @orbslam3,cs336",
+      ],
+      ml: [
+        "Read 3 papers in your research area; note precisely what each one gets wrong @cs285,act",
+      ],
+      rob: [
+        "Method v2 based on what the reading changed @act,diffusion-policy",
+      ],
     },
   ],
   [
-    90,
+    95,
     "MVA course map decisions",
     "Choose the M2 courses you will target and check each prerequisite against what you have actually done.",
     {
@@ -381,68 +417,109 @@ export const weeksP3: RawWeek[] = [
         "!Go through the MVA course list; for each target course, list its prerequisites and your evidence of meeting them @mva-cours",
         "Fill the top two gaps with targeted work, not a new course @mva-cours,bach",
       ],
-      cs: ["Draft the MVA application: CV, project descriptions, motivation letter v1 @mva-cours"],
-      ml: ["Research: results table stable enough to show someone else @cs285"],
-      rob: ["Portfolio: rebuild the project pages with results, not just videos @cs123,leaphand"],
-    },
-  ],
-  [
-    91,
-    "Writing week",
-    "Write the paper. Writing exposes the holes in the experiments while you still have time to fix them.",
-    {
-      math: ["MVA past-exam set: optimization + learning theory, timed and graded @aspremon,mva-cours"],
-      cs: ["Release the research code publicly with a reproduction script and a results checksum @cs336"],
-      ml: ["!Full paper draft: abstract, related work, method, experiments, limitations @bach,cs285"],
-      rob: ["Record the demonstration video that goes with the paper @act"],
-    },
-  ],
-  [
-    92,
-    "Feedback week",
-    "Get it read by someone with power to say it is wrong: a professor, a PhD student, a lab you cold-email.",
-    {
-      math: ["MVA past-exam set: probability + statistics, timed and graded @mva-cours,18650"],
-      cs: ["Interview loop #2, full 4-hour simulation, new problems @neetcode,ml-interviews,sysdesign"],
-      ml: ["Send the draft to 3 readers; incorporate feedback ruthlessly, keep a change log @bach"],
-      rob: ["Cold-email 5 labs (MVA-affiliated included) with the paper and the demo video @mva-cours"],
-    },
-  ],
-  [
-    93,
-    "Second result",
-    "One result is luck; two is a research profile. Push the strongest thread further.",
-    {
-      math: ["Bach exercises: the chapters you rated weakest in the Phase 7 audit @bach"],
-      cs: ["Optimize the deployed policy for onboard inference (quantize, fuse, batch) and measure latency @cs336,csapp"],
-      ml: ["Extension experiment: the obvious next question your paper raises @cs285,act"],
-      rob: ["Deploy on a second platform (quadruped or drone) to show the method transfers @isaaclab,px4"],
-    },
-  ],
-  [
-    94,
-    "School-year close",
-    "Wrap the academic year cleanly, then the final summer is yours.",
-    {
-      math: ["Final coursework audit: every topic in this plan rated 0-3 on 'can I teach it?' @bach,nocedal,vershynin"],
-      cs: ["Publish everything: 5 repos, all with READMEs, benchmarks and honest limitation sections @cs336,orbslam3"],
-      ml: ["Paper v2 submitted somewhere real (workshop, arXiv, or lab application) @bach"],
-      rob: ["Club handover document — you will not be the one maintaining these robots forever @f1tenth"],
-    },
-    "Year-2 checkpoint: a written paper with two results, five public repos, an MVA prerequisite audit with evidence, and a full interview-loop simulation passed.",
-  ],
-  // ───────── Summer 2028 (W95-W105) — optional, MVA-readiness sprint ─────────
-  [
-    95,
-    "Summer: revision architecture",
-    "Optional block. If you do nothing else this summer, do the spaced-revision passes — they are what makes two years of work retrievable under exam pressure.",
-    {
-      math: ["Build the revision system: one A4 sheet per topic, 40 sheets, spaced schedule @nocedal,bach,vershynin"],
-      cs: ["Spaced-repetition deck for algorithms + systems facts you keep forgetting @csapp,cses"],
+      cs: [
+        "Draft the MVA application: CV, project descriptions, motivation letter v1 @mva-cours",
+      ],
+      ml: [
+        "Research: results table stable enough to show someone else @cs285",
+      ],
+      rob: [
+        "Portfolio: rebuild the project pages with results, not just videos @cs123,leaphand",
+      ],
     },
   ],
   [
     96,
+    "Writing week",
+    "Write the paper. Writing exposes the holes in the experiments while you still have time to fix them.",
+    {
+      math: [
+        "MVA past-exam set: optimization + learning theory, timed and graded @aspremon,mva-cours",
+      ],
+      cs: [
+        "Release the research code publicly with a reproduction script and a results checksum @cs336",
+      ],
+      ml: [
+        "!Full paper draft: abstract, related work, method, experiments, limitations @bach,cs285",
+      ],
+      rob: [
+        "Record the demonstration video that goes with the paper @act",
+      ],
+    },
+  ],
+  [
+    97,
+    "Feedback week",
+    "Get it read by someone with power to say it is wrong: a professor, a PhD student, a lab you cold-email.",
+    {
+      math: [
+        "MVA past-exam set: probability + statistics, timed and graded @mva-cours,wasserman,18650",
+      ],
+      cs: [
+        "Interview loop #2, full 4-hour simulation, new problems @neetcode,ml-interviews,sysdesign",
+      ],
+      ml: [
+        "Send the draft to 3 readers; incorporate feedback ruthlessly, keep a change log @bach",
+      ],
+      rob: [
+        "Cold-email 5 labs (MVA-affiliated included) with the paper and the demo video @mva-cours",
+      ],
+    },
+  ],
+  [
+    98,
+    "Second result",
+    "One result is luck; two is a research profile. Push the strongest thread further.",
+    {
+      math: [
+        "Bach exercises: the chapters you rated weakest in the Phase 7 audit @bach",
+      ],
+      cs: [
+        "Optimize the deployed policy for onboard inference (quantize, fuse, batch) and measure latency @cs336,csapp",
+      ],
+      ml: [
+        "Extension experiment: the obvious next question your paper raises @cs285,act",
+      ],
+      rob: [
+        "Deploy on a second platform (quadruped or drone) to show the method transfers @isaaclab,px4",
+      ],
+    },
+  ],
+  [
+    99,
+    "School-year close",
+    "Wrap the academic year cleanly, then the final summer is yours.",
+    {
+      math: [
+        "Final coursework audit: every topic in this plan rated 0-3 on 'can I teach it?' @bach,nocedal,vershynin",
+      ],
+      cs: [
+        "Publish everything: 5 repos, all with READMEs, benchmarks and honest limitation sections @cs336,orbslam3",
+      ],
+      ml: [
+        "Paper v2 submitted somewhere real (workshop, arXiv, or lab application) @bach",
+      ],
+      rob: [
+        "Club handover document — you will not be the one maintaining these robots forever @f1tenth",
+      ],
+    },
+    "Year-2 checkpoint: a written paper with two results, five public repos, an MVA prerequisite audit with evidence, and a full interview-loop simulation passed.",
+  ],
+  [
+    100,
+    "Summer: revision architecture",
+    "Optional block. If you do nothing else this summer, do the spaced-revision passes — they are what makes two years of work retrievable under exam pressure.",
+    {
+      math: [
+        "Build the revision system: one A4 sheet per topic, 40 sheets, spaced schedule @nocedal,bach,vershynin",
+      ],
+      cs: [
+        "Spaced-repetition deck for algorithms + systems facts you keep forgetting @csapp,cses",
+      ],
+    },
+  ],
+  [
+    101,
     "Summer: optimization revision",
     "Pass one: the track that started as your weakness.",
     {
@@ -450,31 +527,37 @@ export const weeksP3: RawWeek[] = [
         "Full timed pass over Boyd ch.1-5, 9-11 and Nocedal; re-derive KKT, duality, BFGS, interior point from blank paper @boyd,nocedal",
         "d'Aspremont MVA exams: all available past papers, timed @aspremon",
       ],
-      rob: ["Light build: whatever hardware repair the autumn demos need @cs123"],
+      rob: [
+        "Light build: whatever hardware repair the autumn demos need @cs123",
+      ],
     },
   ],
   [
-    97,
+    102,
     "Summer: probability and statistics revision",
     "Pass two.",
     {
       math: [
-        "Vershynin ch.1-8 revision by exercises only; 18.650 estimation and testing re-derived @vershynin,18650",
+        "Vershynin ch.1-8 revision by exercises only; 18.650 estimation and testing re-derived @vershynin,wasserman,18650",
         "MVA probabilistic-methods past papers, timed @mva-cours",
       ],
     },
   ],
   [
-    98,
+    103,
     "Summer: learning theory revision",
     "Pass three — the material MVA interviews probe hardest.",
     {
-      math: ["Bach: full book revision via the exercises and your own summaries @bach"],
-      ml: ["Explain out loud, recorded: ERM, Rademacher bounds, kernel rates, SGD analysis @bach"],
+      math: [
+        "Bach: full book revision via the exercises and your own summaries @bach",
+      ],
+      ml: [
+        "Explain out loud, recorded: ERM, Rademacher bounds, kernel rates, SGD analysis @bach",
+      ],
     },
   ],
   [
-    99,
+    104,
     "Summer: vision and geometry revision",
     "Pass four.",
     {
@@ -485,7 +568,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    100,
+    105,
     "Summer: deep learning and RL revision",
     "Pass five.",
     {
@@ -496,7 +579,7 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    101,
+    106,
     "Summer: interview finish",
     "Turn preparation into fluency. The target is being unbothered, not being clever.",
     {
@@ -507,41 +590,61 @@ export const weeksP3: RawWeek[] = [
     },
   ],
   [
-    102,
+    107,
     "Summer: portfolio build",
     "Everything you have made, presented as if a hiring lab is skimming it in 90 seconds.",
     {
-      cs: ["Portfolio site: projects, papers, repos, results — no fluff, numbers everywhere @missing-semester"],
-      rob: ["Final demo reel: 7 projects, 3 minutes, results-first editing @cs123,leaphand,px4"],
+      cs: [
+        "Portfolio site: projects, papers, repos, results — no fluff, numbers everywhere @missing-semester",
+      ],
+      rob: [
+        "Final demo reel: 7 projects, 3 minutes, results-first editing @cs123,leaphand,px4",
+      ],
     },
   ],
   [
-    103,
+    108,
     "Summer: applications",
     "MVA and everything adjacent: internships, labs, exchange options.",
     {
-      math: ["Final MVA application package: dossier, transcripts, motivation letter, project annex @mva-cours"],
-      cs: ["Apply: 10 research internships and 5 labs, each with a tailored first paragraph @mva-cours"],
+      math: [
+        "Final MVA application package: dossier, transcripts, motivation letter, project annex @mva-cours",
+      ],
+      cs: [
+        "Apply: 10 research internships and 5 labs, each with a tailored first paragraph @mva-cours",
+      ],
     },
   ],
   [
-    104,
+    109,
     "Summer: open questions",
     "Spend a week on the thing you most want to know, with no plan attached to it.",
     {
-      ml: ["Free exploration: the paper or idea you kept postponing @cs285,cot"],
-      rob: ["Free build: the mechanism you have wanted to try since Phase 1 @fusion"],
+      ml: [
+        "Free exploration: the paper or idea you kept postponing @cs285,cot",
+      ],
+      rob: [
+        "Free build: the mechanism you have wanted to try since Phase 1 @fusion",
+      ],
     },
   ],
   [
-    105,
+    110,
     "End of plan",
     "Two years, 105 weeks. Write the retrospective and set the next 6-month plan — the habit matters more than this document.",
     {
-      math: ["Final self-assessment across all four tracks; publish the honest scorecard @mva-cours"],
-      cs: ["Write the retrospective: what worked, what was wasted, what you would cut @missing-semester"],
-      ml: ["Set the next objectives: M2 courses, research direction, target labs @mva-cours"],
-      rob: ["Hand the club a roadmap for the projects that outlive you @f1tenth"],
+      math: [
+        "Final self-assessment across all four tracks; publish the honest scorecard @mva-cours",
+      ],
+      cs: [
+        "Write the retrospective: what worked, what was wasted, what you would cut @missing-semester",
+      ],
+      ml: [
+        "Set the next objectives: M2 courses, research direction, target labs @mva-cours",
+      ],
+      rob: [
+        "Hand the club a roadmap for the projects that outlive you @f1tenth",
+      ],
     },
     "Final scorecard: master-level competence documented per track, MVA application submitted, portfolio and paper public, next 6-month plan written.",
   ],

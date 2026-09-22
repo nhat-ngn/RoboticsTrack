@@ -1,11 +1,12 @@
 import type { RawWeek } from "./raw";
 
 /**
- * Weeks 1-33 — Phases 1-4 (14 Sep 2026 → 2 May 2027).
+ * Weeks 1-38 — Phases 1-4 (14 Sep 2026 → ...).
  * Syntax: "!" prefix = prerequisite gate. "@a,b" suffix = resource ids.
+ * W17-21 inserted: Le Gall measure theory, integration, independence, LLN/CLT
+ * — moved ahead of statistics and learning theory, which both assume it.
  */
 export const weeksP1: RawWeek[] = [
-  // ───────────────── PHASE 1 — Repair & tooling (W1-W7) ─────────────────
   [
     1,
     "Zero week",
@@ -160,8 +161,6 @@ export const weeksP1: RawWeek[] = [
     },
     "Sprint output: route-solver repo + makemore rebuilt from scratch + arm links 1-3 physically assembled.",
   ],
-
-  // ───────────────── PHASE 2 — Convexity, ROS 2, nets from scratch (W8-W16) ─────────────────
   [
     8,
     "Convex functions",
@@ -339,7 +338,9 @@ export const weeksP1: RawWeek[] = [
     "Christmas sprint II",
     "Ship, document, and write the first portfolio page.",
     {
-      math: ["18.065 L6-L12: least squares, pseudo-inverse, conditioning @18065"],
+      math: [
+        "18.065 L6-L12: least squares, pseudo-inverse, conditioning @18065",
+      ],
       cs: [
         "Package the optimizer library: README, benchmarks, CI, and a short design note",
         "CSES: cumulative total ≥ 60 problems solved",
@@ -354,10 +355,94 @@ export const weeksP1: RawWeek[] = [
     },
     "Portfolio piece #1 online: 6-DOF arm doing IK-based pick-and-place, with a written derivation of its kinematics.",
   ],
-
-  // ───────────────── PHASE 3 — DL core, classical vision, estimation (W17-W25) ─────────────────
   [
     17,
+    "Measure and integration I",
+    "Le Gall opens. This is the rigorous floor every later probability, statistics and concentration-inequality claim in the plan stands on — done now, ahead of statistics, not as an afterthought at Phase 6.",
+    {
+      math: [
+        "!Le Gall ch.1: σ-algebras, Borel sets, construction of a measure, measurable functions @legall,kortchemski",
+        "Kortchemski TD1: 6 exercises on σ-algebras and measurability, no solutions until done @kortchemski",
+      ],
+      cs: [
+        "6.046 revision: redo the network-flow and NP-completeness problem sets you rushed in W13-14 @mit6046",
+      ],
+      rob: [
+        "Car: consolidate the odometry/IMU fusion stack from W14; write down every open bug @kalman-py",
+      ],
+    },
+  ],
+  [
+    18,
+    "Measure and integration II",
+    "The Lebesgue integral, built properly, and the two convergence theorems every later swap-limits-and-integral move in this plan will cite by name.",
+    {
+      math: [
+        "!Le Gall ch.1-2: Lebesgue integral, monotone and dominated convergence @legall,kortchemski",
+        "Fubini-Tonelli and change of variables; Kortchemski TD2 in full @legall,kortchemski",
+      ],
+      cs: [
+        "CSES: cumulative total — 8 more problems, mixed topics @cses",
+      ],
+      rob: [
+        "Arm project: punch list from the W16 demo video; fix the top three issues @modern-robotics",
+      ],
+    },
+  ],
+  [
+    19,
+    "Independence",
+    "Probability starts here, not before: independence is a measure-theoretic statement, and every 'i.i.d.' in this plan from now on means exactly this.",
+    {
+      math: [
+        "!Le Gall ch.3: independence, product measures, Borel-Cantelli lemmas, 0-1 laws @legall,kortchemski",
+        "Kortchemski TD3: independence and Borel-Cantelli, 6 exercises @kortchemski",
+      ],
+      cs: [
+        "C++: revisit the optimizer library from W15-16, add unit tests you skipped @nocedal",
+      ],
+      ml: [
+        "Re-read your char-transformer write-up from W15; note what you'd change now @karpathy",
+      ],
+    },
+  ],
+  [
+    20,
+    "Laws of large numbers",
+    "Why averaging works, made precise — the base case Monte Carlo, bootstrap and SGD all quietly assume. First, elementary concentration too: this is the light dose Phase 4's learning theory needs on schedule.",
+    {
+      math: [
+        "!Le Gall ch.3-4: weak and strong LLN, both proofs @legall,kortchemski",
+        "Markov, Chebyshev, Hoeffding — prove them from LLN's toolbox; light pass, deep pass returns in Phase 6 @legall,vershynin",
+      ],
+      cs: [
+        "6.046: finish any remaining problem sets from Phase 1-2 before Phase 3 starts @mit6046",
+      ],
+      rob: [
+        "Kalman filter code: add a unit test suite against known analytical solutions @kalman-py",
+      ],
+    },
+  ],
+  [
+    21,
+    "Central limit theorem",
+    "The theorem behind every confidence interval and every 'roughly Gaussian' claim you will make for the rest of the plan. Capstone week: a probability cheat sheet you will still trust in Phase 6.",
+    {
+      math: [
+        "!Le Gall ch.4: characteristic functions, the central limit theorem, proof via Lévy's continuity theorem @legall,kortchemski",
+        "Modes of convergence (a.s., in probability, L^p, in distribution) and how they relate; Kortchemski TD4-5 @legall,kortchemski",
+      ],
+      cs: [
+        "Write a 1-page note: what changed in how you think about randomness after 5 weeks of Le Gall",
+      ],
+      rob: [
+        "Car project: log and plot odometry drift statistics using the LLN/CLT you just proved @kalman-py",
+      ],
+    },
+    "A written proof sheet for LLN, CLT and the elementary concentration inequalities — the foundation every later statistics and generalization claim in the plan cites back to.",
+  ],
+  [
+    22,
     "Vision from first principles",
     "Learn what a camera does before you learn what a CNN does.",
     {
@@ -380,7 +465,7 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    18,
+    23,
     "Features and filtering",
     "Classical CV: still the right tool half the time on a robot.",
     {
@@ -402,7 +487,7 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    19,
+    24,
     "Backprop, properly",
     "You've built it by hand; now understand it as a theorem.",
     {
@@ -425,7 +510,7 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    20,
+    25,
     "CNNs",
     "The workhorse. Build one from scratch before you ever call `torchvision`.",
     {
@@ -448,13 +533,13 @@ export const weeksP1: RawWeek[] = [
     "Milestone: ResNet-18 trained from scratch to >92% on CIFAR-10, and running quantized on the car.",
   ],
   [
-    21,
+    26,
     "Statistics that MVA assumes",
     "The probability half of the maths track starts here.",
     {
       math: [
-        "!18.650 L1-L6: statistical models, MLE, Fisher information, asymptotic normality @18650",
-        "Prove consistency and asymptotic normality of the MLE in an exponential family @18650",
+        "!18.650 L1-L6: statistical models, MLE, Fisher information, asymptotic normality @wasserman,18650",
+        "Prove consistency and asymptotic normality of the MLE in an exponential family @wasserman,18650",
       ],
       cs: [
         "FPCV 6-7: stereo, depth from disparity, epipolar constraint @fpcv",
@@ -470,12 +555,12 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    22,
+    27,
     "Estimation and the exam sprint",
     "Coursework peak — keep the plan alive at reduced volume, deliberately.",
     {
       math: [
-        "18.650 L7-L12: hypothesis testing, confidence intervals, Bayesian inference @18650",
+        "18.650 L7-L12: hypothesis testing, confidence intervals, Bayesian inference @wasserman,18650",
       ],
       cs: [
         "6.046 review + past exam under timed conditions @mit6046",
@@ -490,12 +575,12 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    23,
+    28,
     "Motion and optical flow",
     "Time enters the picture — literally.",
     {
       math: [
-        "18.650 L13-L18: regression, GLM, PCA with proofs @18650",
+        "18.650 L13-L18: regression, GLM, PCA with proofs @wasserman,18650",
         "Boyd ch.9-11 revision: re-derive Newton's method convergence @boyd",
       ],
       cs: [
@@ -512,11 +597,13 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    24,
+    29,
     "February sprint I",
     "Second big build block. Target: the tendon hand.",
     {
-      math: ["Rouvière: 15 exercises on manifolds and IFT applications, timed @rouviere"],
+      math: [
+        "Rouvière: 15 exercises on manifolds and IFT applications, timed @rouviere",
+      ],
       cs: [
         "Hand project: design the C++ control firmware architecture (10 servos, tendon coupling)",
       ],
@@ -530,12 +617,17 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    25,
+    30,
     "February sprint II",
     "Prototype in hand — literally.",
     {
-      math: ["18.650 problem sets: finish 2 full sets @18650"],
-      cs: ["CSES: cumulative ≥ 90 problems @cses", "Write the hand's servo calibration tool with a GUI"],
+      math: [
+        "18.650 problem sets: finish 2 full sets @wasserman,18650",
+      ],
+      cs: [
+        "CSES: cumulative ≥ 90 problems @cses",
+        "Write the hand's servo calibration tool with a GUI",
+      ],
       ml: [
         "Fine-tune DINOv2 features for your hand-pose dataset; compare to training from scratch @dinov2",
       ],
@@ -546,10 +638,8 @@ export const weeksP1: RawWeek[] = [
     },
     "Portfolio piece #2: 3-finger tendon hand closing on objects, with a note on tendon transmission modelling.",
   ],
-
-  // ───────────────── PHASE 4 — Depth: statistics, systems, dynamics (W26-W33) ─────────────────
   [
-    26,
+    31,
     "Learning theory entry",
     "Why does empirical risk minimization work at all?",
     {
@@ -572,7 +662,7 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    27,
+    32,
     "Kernels and SVM",
     "Classical ML at MVA's level of rigour, compressed into two weeks.",
     {
@@ -594,7 +684,7 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    28,
+    33,
     "Generalization",
     "Bias-variance, capacity, and the double descent embarrassment.",
     {
@@ -617,7 +707,7 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    29,
+    34,
     "Multi-view geometry I",
     "The MVA-flavoured version of vision starts now.",
     {
@@ -638,24 +728,28 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    30,
+    35,
     "Multi-view geometry II",
     "Two-view geometry, the essential matrix, and triangulation.",
     {
-      math: ["Least squares on manifolds: Gauss-Newton, Levenberg-Marquardt @nocedal"],
+      math: [
+        "Least squares on manifolds: Gauss-Newton, Levenberg-Marquardt @nocedal",
+      ],
       cs: [
         "!Cremers MVG L5-L8: epipolar geometry, 8-point algorithm, structure reconstruction @tum-mvg,hz",
         "Implement the 8-point algorithm + triangulation from scratch; validate on synthetic data @hz",
         "CSES: 4 problems @cses",
       ],
-      ml: ["EECS498 L19-L20: generative models, VAEs @eecs498"],
+      ml: [
+        "EECS498 L19-L20: generative models, VAEs @eecs498",
+      ],
       rob: [
         "Visual odometry v1: frame-to-frame VO with RANSAC + scale from wheel odometry @tum-mvg",
       ],
     },
   ],
   [
-    31,
+    36,
     "Bundle adjustment",
     "The optimization track and the vision track finally meet.",
     {
@@ -667,7 +761,9 @@ export const weeksP1: RawWeek[] = [
         "Run COLMAP on your own image set; read its BA formulation @colmap",
         "Implement a toy 2-view BA with Ceres or g2o @colmap",
       ],
-      ml: ["Bishop ch.11-12: transformers and attention, second serious pass @bishop-dl,attention"],
+      ml: [
+        "Bishop ch.11-12: transformers and attention, second serious pass @bishop-dl,attention",
+      ],
       rob: [
         "Glider project kick-off: mission profile, morphing mechanism concepts, airfoil selection @uavbook",
       ],
@@ -675,11 +771,13 @@ export const weeksP1: RawWeek[] = [
     "Milestone: your own visual odometry running on real footage, with a written comparison to ORB-SLAM3's front end.",
   ],
   [
-    32,
+    37,
     "April sprint I",
     "Build block: glider airframe + transformer implementation.",
     {
-      math: ["Boyd ch.5 + KKT: full revision, then attempt an MVA past exam @aspremon"],
+      math: [
+        "Boyd ch.5 + KKT: full revision, then attempt an MVA past exam @aspremon",
+      ],
       cs: [
         "Implement a transformer in C++ (inference only) to force clarity about shapes and memory @annotated-transformer",
       ],
@@ -692,7 +790,7 @@ export const weeksP1: RawWeek[] = [
     },
   ],
   [
-    33,
+    38,
     "April sprint II",
     "Year 1 consolidation and honest self-assessment.",
     {
